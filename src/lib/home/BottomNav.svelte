@@ -1,16 +1,14 @@
 <script>
-  import { Command } from "cmdk-sv";
-  let loading = false;
   import {
     BatteryMedium,
     ChevronUp,
-    FolderClosed,
     MessageSquare,
     Search,
     WifiIcon,
   } from "lucide-svelte";
   import ToggleMode from "./ToggleMode.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
+  import BottomRightSide from "./BottomRightSide.svelte";
 </script>
 
 <div
@@ -189,29 +187,5 @@
       </svg>
     </div>
   </div>
-  <div class="flex items-center gap-x-1 px-5">
-    <div class="">
-      <Button variant="ghost" size="icon"
-        ><ChevronUp size="19" strokeWidth="1.6" /></Button
-      >
-    </div>
-    <div>
-      <Button variant="ghost" size="icon">
-        <BatteryMedium size="19" strokeWidth="1.6" />
-      </Button>
-    </div>
-    <div>
-      <Button variant="ghost" size="icon">
-        <WifiIcon size="19" strokeWidth="1.6" class="-rotate-45" />
-      </Button>
-    </div>
-    <div>
-      <Button variant="ghost" size="icon">
-        <MessageSquare size="19" strokeWidth="1.6" />
-      </Button>
-    </div>
-    <div>
-      <ToggleMode />
-    </div>
-  </div>
+  <BottomRightSide />
 </div>

@@ -5,7 +5,7 @@
   export let iconSvgCode = "";
 </script>
 
-<div class="hover:bg-gray-800 transition-all duration-100 w-fit p-2 rounded-md">
+<div class="hover:bg-gray-300/60 backdrop-blur-sm dark:hover:bg-gray-800 transition-all duration-100 w-fit p-2 rounded-md">
   <a href={iconPath}>
     <div class="flex flex-col items-center justify-center">
       {#if iconImg == ""}

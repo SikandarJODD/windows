@@ -26,7 +26,7 @@
   "type": "module",
   "dependencies": {
     "@neodrag/svelte": "^2.0.3",
-    "bits-ui": "^0.13.4",
+    "bits-ui": "^0.13.5",
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.12",
     "lucide-svelte": "^0.307.0",
