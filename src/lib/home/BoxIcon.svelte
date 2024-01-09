@@ -3,17 +3,32 @@
   export let iconImg = "";
   export let iconPath = "/";
   export let iconSvgCode = "";
+  export let id = 1;
+  export let swapClass = "";
+  /*
+   use:draggable={{
+    axis: "both",
+    bounds: "body",
+  }}
+  */
 </script>
 
-<div class="hover:bg-gray-300/60 backdrop-blur-sm dark:hover:bg-gray-800 transition-all duration-100 w-fit p-2 rounded-md">
-  <a href={iconPath}>
-    <div class="flex flex-col items-center justify-center">
-      {#if iconImg == ""}
-        {@html iconSvgCode}
-      {:else}
-        <img src={iconImg} class="h-10 w-10 rounded-sm" alt={name} />
-      {/if}
-      <p class="text-[13px] mt-1 -mb-1.5">{name}</p>
-    </div>
-  </a>
-</div>
+{#if name.length > 0 && name !== "mint"}
+  <div
+    class="hover:bg-gray-300/60 backdrop-blur-sm dark:hover:bg-gray-800 transition-all duration-100 w-fit p-2 rounded-md"
+    id="unique-{id} z-10 {swapClass}"
+  >
+    <a href={iconPath}>
+      <div class="flex flex-col items-center justify-center">
+        {#if iconImg == ""}
+          {@html iconSvgCode}
+        {:else}
+          <img src={iconImg} class="h-10 w-10 rounded-sm" alt={name} />
+        {/if}
+        <p class="text-[13px] mt-1 -mb-1.5">{name}</p>
+      </div>
+    </a>
+  </div>
+{:else if name == "mint"}
+  <div class="w-16 h-20 rounded-md {name} {swapClass}"></div>
+{/if}

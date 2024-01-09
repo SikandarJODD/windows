@@ -4,12 +4,55 @@
   import NotionIcon from "$lib/images/notion.svg";
   import Chrome from "$lib/images/chrome.svg";
 
-  let file = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.08"  stroke-linecap="round" stroke-linejoin="round" class="h-10 w-10 lucide lucide-file"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+  let allIcons = [
+    {
+      id: 1,
+      name: "Netflix",
+      iconImg: NetflixIcon,
+      swapClass: "highliht",
+    },
+    {
+      id: 2,
+      name: "notion",
+      iconImg: NotionIcon,
+      swapClass: "highliht",
+    },
+    {
+      id: 3,
+      name: "Chrome",
+      iconImg: Chrome,
+      swapClass: "highliht",
+    },
+  ];
+  import { onMount } from "svelte";
+  import { flip } from "svelte/animate";
+  import { quintOut } from "svelte/easing";
+  import Sortable from "sortablejs";
+
+  let el;
+  onMount(() => {
+    for (let i = 5; i < 120; i++) {
+      allIcons.push({
+        id: i,
+        name: "mint",
+        iconImg: Chrome,
+        swapClass: "highlight",
+      });
+      allIcons = [...allIcons];
+    }
+    el = document.getElementById("items");
+    // Sortable.mount(new Swap());
+    new Sortable.create(el, {
+      animation: 300,
+      swap: true,
+    });
+  });
 </script>
 
-<div class=" flex gap-3">
-  <BoxIcon name="Netflix" iconImg={NetflixIcon} />
-  <BoxIcon name="code.txt" iconSvgCode={file} />
-  <BoxIcon name="notion" iconImg={NotionIcon} />
-  <BoxIcon name="Chrome" iconImg={Chrome} />
+<div class="flex gap-3 flex-wrap" id="items">
+  {#each allIcons as code (code.id)}
+    <div animate:flip={{ delay: 250, duration: 250, easing: quintOut }}>
+      <BoxIcon {...code} />
+    </div>
+  {/each}
 </div>
