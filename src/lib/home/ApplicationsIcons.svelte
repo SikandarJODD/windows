@@ -1,30 +1,32 @@
 <script>
-  import NetflixIcon from "$lib/images/netflixIcon.svg";
-  import { allIcons } from "$lib";
+  import { allIcons, realIcons } from "$lib";
 
-  let realApp = 3;
   import { onMount } from "svelte";
   import { flip } from "svelte/animate";
   import { quintOut } from "svelte/easing";
   import Sortable from "sortablejs";
   import BoxIcon from "./BoxIcon.svelte";
+  // https://picsum.photos/seed/${i}/200/300 to get random images
 
   let el;
   onMount(() => {
-    // for (let i = 4; i < 160; i++) {
-    //   allIcons.push({
-    //     id: i,
-    //     name: "mint",
-    //     iconImg: Chrome,
-    //     swapClass: "highlight",
-    //   });
-    //   allIcons = [...allIcons];
-    // }
+    for (let i = 4; i < 160; i++) {
+      allIcons.update((u) => {
+        u.push({
+          id: u.length + 1,
+          name: "zz",
+          iconImg: ``,
+          swapClass: "",
+          content: "",
+        });
+        return u;
+      });
+    }
     el = document.getElementById("items");
     new Sortable.create(el, {
       animation: 250,
       swap: true,
-      filter: ".mint",
+      filter: ".zz",
     });
   });
 </script>

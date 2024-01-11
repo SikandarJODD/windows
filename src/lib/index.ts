@@ -1,7 +1,8 @@
-import { writable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 import NetflixIcon from "$lib/images/netflixIcon.svg";
 import NotionIcon from "$lib/images/notion.svg";
 import Chrome from "$lib/images/chrome.svg";
+import NotepadIcon from "$lib/images/Notepad_Logo.webp";
 export let allIcons = writable([
     {
         id: 1,
@@ -24,4 +25,15 @@ export let allIcons = writable([
         swapClass: "highliht",
         content: ""
     },
-])
+    {
+        id: 4,
+        name: "Svelte Life",
+        iconImg: NotepadIcon,
+        swapClass: "highliht",
+        content: "hello i love svelte"
+    },
+]);
+
+export let realIcons = derived(allIcons, ($allIcons) => {
+    return $allIcons.filter((icon) => icon.name !== "zz");
+});

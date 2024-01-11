@@ -1,13 +1,5 @@
 <script>
-  import {
-    BatteryMedium,
-    ChevronUp,
-    MessageSquare,
-    Search,
-    WifiIcon,
-  } from "lucide-svelte";
-  import ToggleMode from "./ToggleMode.svelte";
-  import Button from "$lib/components/ui/button/button.svelte";
+  import { Search } from "lucide-svelte";
   import BottomRightSide from "./BottomRightSide.svelte";
 </script>
 

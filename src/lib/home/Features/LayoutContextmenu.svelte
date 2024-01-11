@@ -8,18 +8,7 @@
 
   let iconSize = "medium";
 
-  let AddData = () => {
-    // console.log("Add Data", isopen);
-
-    // allIcons.update((u) => {
-    //   u.push({
-    //     id: u.length + 1,
-    //     name: "code",
-    //     iconImg: Notepad_logo,
-    //     swapClass: "",
-    //   });
-    //   return u;
-    // });
+  let ChangeState = () => {
     isopen = true;
   };
   let isopen = false;
@@ -58,7 +47,7 @@
         }}>New</ContextMenu.SubTrigger
       >
       <ContextMenu.SubContent class="w-56">
-        <ContextMenu.Item on:click={AddData}>
+        <ContextMenu.Item on:click={ChangeState}>
           New Text Document
           <ContextMenu.Shortcut>⌘N</ContextMenu.Shortcut>
         </ContextMenu.Item>

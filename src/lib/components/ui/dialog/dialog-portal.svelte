@@ -3,7 +3,7 @@
 
   type $$Props = DialogPrimitive.PortalProps;
   import { draggable } from "@neodrag/svelte";
-  let position = { x: -300, y: -400 };
+  let position = { x: 0, y: -550 };
 </script>
 
 <DialogPrimitive.Portal {...$$restProps}>

@@ -4,7 +4,7 @@
   import * as Dialog from ".";
   import { cn, flyAndScale } from "$lib/utils";
   import { Cross2 } from "radix-icons-svelte";
-  import { Square } from "lucide-svelte";
+  import { Circle, Square } from "lucide-svelte";
 
   type $$Props = DialogPrimitive.ContentProps;
 
@@ -22,15 +22,16 @@
     {transition}
     {transitionConfig}
     class={cn(
-      " fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg sm:rounded-lg md:w-full overflow-hidden",
+      " fixed left-[46%]  z-50 grid w-full bg-background  gap-4 border p-6 shadow-lg sm:rounded-lg md:w-full ",
       className
     )}
     {...$$restProps}
   >
     <div
-      class=" bg-gray-800 absolute top-0 w-full overflow-hidden px-3 py-1 text-sm text-white font-semibold rounded-t-lg"
+      class=" dark:bg-gray-800 absolute flex items-center top-0 w-full overflow-hidden px-3 py-1 text-sm text-primary font-semibold rounded-t-lg"
     >
-      Untitled-Notepad
+      <Circle fill="white" size="9" class="mr-1" />
+      Notepad
     </div>
     <slot />
     <DialogPrimitive.Close
