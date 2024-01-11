@@ -4,11 +4,14 @@
   import { onMount } from "svelte";
   import { flip } from "svelte/animate";
   import { quintOut } from "svelte/easing";
-  import Sortable from "sortablejs";
+  // import Sortable from "sortablejs";
+  // const { Swap } = Sortable;
+  import MintList from "./Features/addNote/MintList.svelte";
   import BoxIcon from "./BoxIcon.svelte";
   // https://picsum.photos/seed/${i}/200/300 to get random images
 
-  let el;
+  let el, codem;
+
   onMount(() => {
     for (let i = 4; i < 160; i++) {
       allIcons.update((u) => {
@@ -23,8 +26,8 @@
       });
     }
     el = document.getElementById("items");
-    new Sortable.create(el, {
-      animation: 250,
+    new Sortable(el, {
+      animation: 200,
       swap: true,
       filter: ".zz",
     });
@@ -37,4 +40,9 @@
       <BoxIcon {...code} />
     </div>
   {/each}
+  <!-- <MintList class="codem">
+    <div>List Item 1</div>
+    <div>List Item 2</div>
+    <div>List Item 3</div>
+  </MintList> -->
 </div>
