@@ -11,10 +11,10 @@
 {#if name.length > 0 && name !== "zz"}
   {#key $sizeIcon}
     <div
-      class="cursor-pointer hover:bg-gray-200/60 hover:backdrop-blur-sm dark:hover:bg-gray-300/10 transition-all duration-200 w-fit p-2 {$bg_image ===
+      class="cursor-pointer hover:backdrop-blur-sm transition-all duration-200 w-fit p-2 {$bg_image ===
       0
-        ? 'rounded-md'
-        : 'rounded-none  dark:hover:border border border-transparent dark:hover:border-slate-100/30 hover:border-slate-100/30 dark:hover:bg-gray-200/30 hover:bg-gray-200/30'}"
+        ? 'hover:bg-gray-300/60 dark:hover:bg-gray-300/10  dark:hover:border border border-transparent dark:hover:border-slate-100/30 hover:border-slate-100/30'
+        : 'rounded-none  dark:hover:border border border-transparent dark:hover:border-slate-100/30 hover:border-slate-100/30 dark:hover:bg-gray-300/30 hover:bg-gray-300/30'}"
       id="unique-{id}"
     >
       <div class="flex flex-col items-center justify-center">

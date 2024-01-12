@@ -5,6 +5,8 @@ import Chrome from "$lib/images/chrome.svg";
 import NotepadIcon from "$lib/images/Notepad_Logo.webp";
 import windowsBg from "$lib/images/peakpx.jpg";
 import windowsBg2 from "$lib/images/bg2.jpg"
+import windowbg3 from '$lib/images/w5.jpg'
+import windowbg6 from '$lib/images/w6.jpg'
 
 export let allIcons = writable([
     {
@@ -62,7 +64,7 @@ export let bgs = [
     },
     {
         id: 3,
-        img: windowsBg,
+        img: windowbg6,
     },
 
 ]

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { bg_image } from "$lib";
   import { showDesktopIcon } from "$lib";
-  import { Image } from "lucide-svelte";
+  import { Image, File, Folder } from "lucide-svelte";
   import { sizeIcon } from "$lib";
   import * as ContextMenu from "$lib/components/ui/context-menu";
   import NoteDailog from "$lib/home/Features/addNote/NoteDailog.svelte";
@@ -73,9 +73,13 @@
       >
       <ContextMenu.SubContent class="w-56">
         <ContextMenu.Item on:click={ChangeState}>
+          <File size="16" class="mr-1.5" strokeWidth="1.7" />
           Text Document
         </ContextMenu.Item>
-        <ContextMenu.Item>Folder</ContextMenu.Item>
+        <ContextMenu.Item>
+          <Folder size="16" class="mr-1.5" strokeWidth="1.7" />
+          Folder</ContextMenu.Item
+        >
       </ContextMenu.SubContent>
     </ContextMenu.Sub>
     <ContextMenu.Separator />
@@ -88,7 +92,7 @@
         <ContextMenu.RadioGroup bind:value={bgIndex}>
           <ContextMenu.RadioItem value="1">Simple</ContextMenu.RadioItem>
           <ContextMenu.RadioItem value="2">Lofi</ContextMenu.RadioItem>
-          <ContextMenu.RadioItem value="3">Forest</ContextMenu.RadioItem>
+          <ContextMenu.RadioItem value="3">Goku</ContextMenu.RadioItem>
           <ContextMenu.RadioItem value="0"
             >Remove background</ContextMenu.RadioItem
           >
