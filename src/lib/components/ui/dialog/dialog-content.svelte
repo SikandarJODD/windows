@@ -32,6 +32,9 @@
     >
       <Circle fill="white" size="9" class="mr-1" />
       Notepad
+      <span class="text-muted-foreground ml-1.5 font-normal"
+        >ctrl + m to Save</span
+      >
     </div>
     <slot />
     <DialogPrimitive.Close

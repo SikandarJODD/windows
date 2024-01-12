@@ -1,35 +1,47 @@
 <script lang="ts">
-  import Notepad_logo from "$lib/images/Notepad_Logo.webp";
-  import { allIcons, realIcons } from "$lib";
+  import { allIcons, bottomApps } from "$lib";
   import * as Dialog from "$lib/components/ui/dialog";
   import Textarea from "$lib/components/ui/textarea/textarea.svelte";
   export let isopen = true;
-  import { draggable } from "@neodrag/svelte";
+  export let content = "";
+  export let index = 0;
+
   import { onMount } from "svelte";
   let addDatatoIcons = () => {
     window.addEventListener("keydown", (e) => {
-      // if key ctrl +s then add it to addicons array
       if (e.ctrlKey && e.key === "m" && content.length > 0) {
-        console.log("polly is this working", isopen);
         allIcons.update((u) => {
-          u[$realIcons.length].name = `Note_${$realIcons.length + 1}`;
-          u[$realIcons.length].iconImg = Notepad_logo;
-          u[$realIcons.length].swapClass = "";
-          u[$realIcons.length].content = content;
+          u[index].content = content;
+          u[index].isopen = false;
           return u;
         });
-        isopen = false;
+        // isopen = false;
+        bottomApps.update((n) => {
+          // console.log($allIcons[index], "allIcons");
+          let mint = n.filter((n) => n.name !== $allIcons[index].name);
+          return mint;
+        });
         content = "";
       }
     });
   };
-  let content = "";
   onMount(() => {
     addDatatoIcons();
   });
+  let ischanged = () => {
+    isopen = false;
+    bottomApps.update((n) => {
+      let mint = n.filter((n) => n.name !== $allIcons[index].name);
+      return mint;
+    });
+    allIcons.update((u) => {
+      u[index].isopen = false;
+      return u;
+    });
+  };
 </script>
 
-<Dialog.Root open={isopen}>
+<Dialog.Root open={isopen} onOutsideClick={ischanged} onOpenChange={ischanged}>
   <Dialog.Content class="sm:max-w-[500px] p-0 pt-6">
     <div class="cancel">
       <Textarea

@@ -1,5 +1,5 @@
 <script>
-  import { scale, fade } from "svelte/transition";
+  import { fade } from "svelte/transition";
   import { showDesktopIcon } from "$lib";
   import { allIcons } from "$lib";
 
@@ -30,6 +30,7 @@
           iconImg: ``,
           swapClass: "",
           content: "",
+          isopen: false,
         });
         return u;
       });
@@ -47,9 +48,9 @@
 
 {#if $showDesktopIcon}
   <div class="flex gap-3 flex-wrap" id="items" in:fade>
-    {#each $allIcons as code (code.id)}
+    {#each $allIcons as code, index (code.id)}
       <div animate:flip={{ delay: 250, duration: 250, easing: quintOut }}>
-        <BoxIcon {...code} />
+        <BoxIcon {...code} {index} />
       </div>
     {/each}
   </div>
