@@ -37,3 +37,7 @@ export let allIcons = writable([
 export let realIcons = derived(allIcons, ($allIcons) => {
     return $allIcons.filter((icon) => icon.name !== "zz");
 });
+
+
+export let sizeIcon = writable(10);
+export let showDesktopIcon = writable(true);

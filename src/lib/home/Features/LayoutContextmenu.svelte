@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { allIcons } from "$lib";
+  import { showDesktopIcon } from "$lib";
+  import { sizeIcon } from "$lib";
   import * as ContextMenu from "$lib/components/ui/context-menu";
-  import Notepad_logo from "$lib/images/Notepad_Logo.webp";
   import NoteDailog from "$lib/home/Features/addNote/NoteDailog.svelte";
-
-  let showDesktopIcons = true;
 
   let iconSize = "medium";
 
@@ -12,6 +10,16 @@
     isopen = true;
   };
   let isopen = false;
+
+  let smallIcon = () => {
+    sizeIcon.set(8);
+  };
+  let largeIcon = () => {
+    sizeIcon.set(12);
+  };
+  let defaltIcon = () => {
+    sizeIcon.set(10);
+  };
 </script>
 
 <NoteDailog {isopen} />
@@ -24,16 +32,18 @@
       <ContextMenu.SubTrigger inset>View</ContextMenu.SubTrigger>
       <ContextMenu.SubContent class="w-48">
         <ContextMenu.RadioGroup bind:value={iconSize}>
-          <ContextMenu.RadioItem value="small">Small Icon</ContextMenu.RadioItem
+          <ContextMenu.RadioItem value="small" on:click={smallIcon}
+            >Small Icon</ContextMenu.RadioItem
           >
-          <ContextMenu.RadioItem value="medium"
+          <ContextMenu.RadioItem value="medium" on:click={defaltIcon}
             >Medium Icon</ContextMenu.RadioItem
           >
-          <ContextMenu.RadioItem value="large">Large Icon</ContextMenu.RadioItem
+          <ContextMenu.RadioItem value="large" on:click={largeIcon}
+            >Large Icon</ContextMenu.RadioItem
           >
         </ContextMenu.RadioGroup>
         <ContextMenu.Separator />
-        <ContextMenu.CheckboxItem bind:checked={showDesktopIcons}>
+        <ContextMenu.CheckboxItem bind:checked={$showDesktopIcon}>
           Show Desktop Icon
         </ContextMenu.CheckboxItem>
       </ContextMenu.SubContent>

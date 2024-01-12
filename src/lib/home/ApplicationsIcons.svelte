@@ -1,4 +1,6 @@
 <script>
+  import { scale, fade } from "svelte/transition";
+  import { showDesktopIcon } from "$lib";
   import { allIcons } from "$lib";
 
   import { onMount } from "svelte";
@@ -9,7 +11,17 @@
 
   let el, codem;
 
+  let sortableSvelte = () => {
+    el = document.getElementById("items");
+    new Sortable(el, {
+      animation: 200,
+      swap: true,
+      filter: ".zz",
+    });
+  };
+  let isMounted = false;
   onMount(() => {
+    isMounted = true;
     for (let i = 4; i < 160; i++) {
       allIcons.update((u) => {
         u.push({
@@ -22,19 +34,23 @@
         return u;
       });
     }
-    el = document.getElementById("items");
-    new Sortable(el, {
-      animation: 200,
-      swap: true,
-      filter: ".zz",
-    });
+    sortableSvelte();
   });
+  $: {
+    if ($showDesktopIcon && isMounted) {
+      setTimeout(() => {
+        sortableSvelte();
+      }, 100);
+    }
+  }
 </script>
 
-<div class="flex gap-3 flex-wrap" id="items">
-  {#each $allIcons as code (code.id)}
-    <div animate:flip={{ delay: 250, duration: 250, easing: quintOut }}>
-      <BoxIcon {...code} />
-    </div>
-  {/each}
-</div>
+{#if $showDesktopIcon}
+  <div class="flex gap-3 flex-wrap" id="items" in:fade>
+    {#each $allIcons as code (code.id)}
+      <div animate:flip={{ delay: 250, duration: 250, easing: quintOut }}>
+        <BoxIcon {...code} />
+      </div>
+    {/each}
+  </div>
+{/if}
