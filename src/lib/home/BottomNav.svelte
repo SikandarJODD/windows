@@ -4,7 +4,7 @@
 </script>
 
 <div
-  class="bottom_nav fixed bottom-0 w-full h-11 flex border-t border-slate-400"
+  class="bottom_nav fixed bottom-0 w-full h-11 flex border-t border-slate-400 bg-gray-200 dark:bg-gray-900"
 >
   <div
     class="flex items-center justify-center w-12 bg-gray-700 dark:bg-gray-900"

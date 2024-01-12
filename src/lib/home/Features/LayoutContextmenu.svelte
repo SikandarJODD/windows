@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { bg_image } from "$lib";
   import { showDesktopIcon } from "$lib";
+  import { Image } from "lucide-svelte";
   import { sizeIcon } from "$lib";
   import * as ContextMenu from "$lib/components/ui/context-menu";
   import NoteDailog from "$lib/home/Features/addNote/NoteDailog.svelte";
@@ -20,6 +22,19 @@
   let defaltIcon = () => {
     sizeIcon.set(10);
   };
+
+  let bgIndex = "0";
+  $: {
+    if (bgIndex === "1") {
+      bg_image.set(1);
+    } else if (bgIndex === "2") {
+      bg_image.set(2);
+    } else if (bgIndex === "3") {
+      bg_image.set(3);
+    } else if (bgIndex === "0") {
+      bg_image.set(0);
+    }
+  }
 </script>
 
 <NoteDailog {isopen} />
@@ -48,7 +63,7 @@
         </ContextMenu.CheckboxItem>
       </ContextMenu.SubContent>
     </ContextMenu.Sub>
-    <ContextMenu.Separator />
+
     <ContextMenu.Sub>
       <ContextMenu.SubTrigger
         inset
@@ -58,10 +73,26 @@
       >
       <ContextMenu.SubContent class="w-56">
         <ContextMenu.Item on:click={ChangeState}>
-          New Text Document
-          <ContextMenu.Shortcut>⌘N</ContextMenu.Shortcut>
+          Text Document
         </ContextMenu.Item>
-        <ContextMenu.Item>New Folder</ContextMenu.Item>
+        <ContextMenu.Item>Folder</ContextMenu.Item>
+      </ContextMenu.SubContent>
+    </ContextMenu.Sub>
+    <ContextMenu.Separator />
+    <ContextMenu.Sub>
+      <ContextMenu.SubTrigger>
+        <Image size="16" class="mr-1.5" strokeWidth="1.7" />
+        Change Background</ContextMenu.SubTrigger
+      >
+      <ContextMenu.SubContent class="w-56">
+        <ContextMenu.RadioGroup bind:value={bgIndex}>
+          <ContextMenu.RadioItem value="1">Simple</ContextMenu.RadioItem>
+          <ContextMenu.RadioItem value="2">Lofi</ContextMenu.RadioItem>
+          <ContextMenu.RadioItem value="3">Forest</ContextMenu.RadioItem>
+          <ContextMenu.RadioItem value="0"
+            >Remove background</ContextMenu.RadioItem
+          >
+        </ContextMenu.RadioGroup>
       </ContextMenu.SubContent>
     </ContextMenu.Sub>
   </ContextMenu.Content>

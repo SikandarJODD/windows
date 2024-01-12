@@ -3,6 +3,9 @@ import NetflixIcon from "$lib/images/netflixIcon.svg";
 import NotionIcon from "$lib/images/notion.svg";
 import Chrome from "$lib/images/chrome.svg";
 import NotepadIcon from "$lib/images/Notepad_Logo.webp";
+import windowsBg from "$lib/images/peakpx.jpg";
+import windowsBg2 from "$lib/images/bg2.jpg"
+
 export let allIcons = writable([
     {
         id: 1,
@@ -27,7 +30,7 @@ export let allIcons = writable([
     },
     {
         id: 4,
-        name: "Svelte Life",
+        name: "Svelte",
         iconImg: NotepadIcon,
         swapClass: "highliht",
         content: "hello i love svelte"
@@ -41,3 +44,25 @@ export let realIcons = derived(allIcons, ($allIcons) => {
 
 export let sizeIcon = writable(10);
 export let showDesktopIcon = writable(true);
+
+export let bg_image = writable(0);
+
+export let bgs = [
+    {
+        id: 0,
+        img: windowsBg,
+    },
+    {
+        id: 1,
+        img: windowsBg,
+    },
+    {
+        id: 2,
+        img: windowsBg2,
+    },
+    {
+        id: 3,
+        img: windowsBg,
+    },
+
+]
