@@ -10,6 +10,7 @@
   // https://picsum.photos/seed/${i}/200/300 to get random images
 
   let el, codem;
+  // Branch : folders
 
   let sortableSvelte = () => {
     el = document.getElementById("items");
