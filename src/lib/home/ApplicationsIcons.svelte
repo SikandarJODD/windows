@@ -13,17 +13,26 @@
   // Branch : folders
 
   let sortableSvelte = () => {
-    el = document.getElementById("items");
+    el = document.getElementById("minting");
     new Sortable(el, {
-      animation: 200,
+      group: {
+        put: ["minting", "shared"],
+        pull: ["minting", "shared"],
+        name: "minting",
+      },
+
       swap: true,
       filter: ".zz",
+      animation: 150,
+      fallbackOnBody: true,
+      swapThreshold: 0.65,
+      sort: true,
     });
   };
   let isMounted = false;
   onMount(() => {
     isMounted = true;
-    for (let i = 4; i < 160; i++) {
+    for (let i = 6; i < 160; i++) {
       allIcons.update((u) => {
         u.push({
           id: u.length + 1,
@@ -32,6 +41,7 @@
           swapClass: "",
           content: "",
           isopen: false,
+          type: "app",
         });
         return u;
       });
@@ -48,7 +58,7 @@
 </script>
 
 {#if $showDesktopIcon}
-  <div class="flex gap-3 flex-wrap" id="items" in:fade>
+  <div class="flex gap-3 flex-wrap" id="minting" in:fade>
     {#each $allIcons as code, index (code.id)}
       <div animate:flip={{ delay: 250, duration: 250, easing: quintOut }}>
         <BoxIcon {...code} {index} />

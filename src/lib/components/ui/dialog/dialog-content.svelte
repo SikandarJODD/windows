@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { draggable } from "@neodrag/svelte";
   import { Dialog as DialogPrimitive } from "bits-ui";
   import * as Dialog from ".";
   import { cn, flyAndScale } from "$lib/utils";
@@ -22,31 +21,22 @@
     {transition}
     {transitionConfig}
     class={cn(
-      " fixed left-[46%]  z-50 grid w-full bg-background  gap-4 border p-6 shadow-lg sm:rounded-lg md:w-full ",
+      " fixed left-[46%]  z-50 grid w-full bg-background  gap-4 border p-6 shadow-lg  md:w-full ",
       className
     )}
     {...$$restProps}
   >
-    <div
-      class=" dark:bg-gray-800 absolute flex items-center top-0 w-full overflow-hidden px-3 py-1 text-sm text-primary font-semibold rounded-t-lg"
+    <DialogPrimitive.Close
+      class="absolute right-7 z-50 top-1 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
     >
-      <Circle fill="white" size="9" class="mr-1" />
-      Notepad
-      <span class="text-muted-foreground ml-1.5 font-normal"
-        >ctrl + m to Save</span
-      >
-    </div>
+      <Square strokeWidth="1.5" class="h-4 w-4" />
+      <span class="sr-only">Close</span>
+    </DialogPrimitive.Close>
     <slot />
     <DialogPrimitive.Close
       class="absolute right-1.5 top-1  rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
     >
       <Cross2 class="h-4 w-4" />
-      <span class="sr-only">Close</span>
-    </DialogPrimitive.Close>
-    <DialogPrimitive.Close
-      class="absolute right-7 top-1 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
-    >
-      <Square strokeWidth="1.5" class="h-4 w-4" />
       <span class="sr-only">Close</span>
     </DialogPrimitive.Close>
   </DialogPrimitive.Content>

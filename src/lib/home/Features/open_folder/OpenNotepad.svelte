@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Circle } from "lucide-svelte";
   import { allIcons, bottomApps } from "$lib";
   import * as Dialog from "$lib/components/ui/dialog";
   import Textarea from "$lib/components/ui/textarea/textarea.svelte";
@@ -43,6 +44,16 @@
 
 <Dialog.Root open={isopen} onOutsideClick={ischanged} onOpenChange={ischanged}>
   <Dialog.Content class="sm:max-w-[500px] p-0 pt-6">
+    <div
+      class=" dark:bg-gray-800 absolute flex items-center top-0 w-full overflow-hidden px-3 py-1 text-sm text-primary font-semibold"
+    >
+      <Circle fill="white" size="9" class="mr-1" />
+      Notepad
+      <span class="text-muted-foreground ml-1.5 font-normal"
+        >ctrl + m to Save</span
+      >
+    </div>
+
     <div class="cancel">
       <Textarea
         class="border-none outline-none focus-visible:ring-transparent"
